@@ -20,7 +20,6 @@ from PyQt5.QtCore import QTimer, pyqtSignal, QThread, QPropertyAnimation, QEasin
 from PyQt5.QtGui import QIcon, QFont, QPalette, QColor, QPainter, QLinearGradient, QBrush, QPen, QPixmap
 from PyQt5.QtCore import Qt, QSize
 from dotenv import load_dotenv
-sdsfsdf
 # Cargar variables de entorno
 load_dotenv()
 
