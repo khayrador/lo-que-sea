@@ -1,0 +1,40 @@
+# Dependencias adicionales para funcionalidades avanzadas de JARVIS
+# Instalar con: pip install -r requirements_advanced.txt
+
+# Para gestión de correo Outlook (Windows)
+pywin32>=306
+
+# Para gestión de correo Exchange/Office 365
+exchangelib>=5.0.0
+
+# Para análisis de archivos PDF
+PyPDF2>=3.0.0
+pdfplumber>=0.10.0
+
+# Para manejo de archivos de Office
+python-docx>=0.8.11
+openpyxl>=3.1.0
+
+# Para análisis de imágenes
+Pillow>=10.0.0
+
+# Para análisis de metadatos
+exifread>=3.0.0
+
+# Para manejo de archivos comprimidos
+py7zr>=0.20.0
+
+# Para análisis de código
+ast-decompiler>=0.7.0
+autopep8>=2.0.0
+
+# Para conectores de base de datos (opcional)
+psycopg2-binary>=2.9.0  # PostgreSQL
+mysql-connector-python>=8.0.0  # MySQL
+pyodbc>=4.0.0  # SQL Server
+cx-Oracle>=8.0.0  # Oracle
+pymongo>=4.0.0  # MongoDB
+
+# Para análisis de texto avanzado
+chardet>=5.0.0
+python-magic>=0.4.0

@@ -1,0 +1,27 @@
+{
+    "assistant_name": "Jarvis",
+    "language": "es",
+    "theme": "dark",
+    "voice": {
+        "enabled": true,
+        "tts_rate": 200,
+        "tts_volume": 0.8,
+        "recognition_language": "es-ES"
+    },
+    "file_search": {
+        "max_results": 50,
+        "search_extensions": [".txt", ".py", ".js", ".html", ".css", ".json", ".md"],
+        "search_paths": ["~/Desktop", "~/Documents", "~/Downloads"]
+    },
+    "web": {
+        "default_search_engine": "google",
+        "open_in_new_tab": true
+    },
+    "custom_responses": {
+        "saludo": [
+            "¡Hola! Soy Jarvis, tu asistente virtual. ¿En qué puedo ayudarte?",
+            "¡Saludos! ¿Qué necesitas que haga por ti hoy?",
+            "¡Hola! Estoy aquí para asistirte. ¿Qué tarea tienes para mí?"
+        ]
+    }
+}

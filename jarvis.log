@@ -1,0 +1,143 @@
+2025-08-04 17:05:31,174 - root - ERROR - Error importando módulos: cannot import name 'MainWindowBase' from 'ui_designs.main_window_base' (C:\Users\daslo\OneDrive\Escritorio\jarvis\pyqt_version\ui_designs\main_window_base.py)
+2025-08-04 17:14:17,627 - root - ERROR - Error importando módulos: cannot import name 'MainWindowBase' from 'ui_designs.main_window_base' (C:\Users\daslo\OneDrive\Escritorio\jarvis\pyqt_version\ui_designs\main_window_base.py)
+2025-08-04 17:42:28,412 - backend.audio_manager - ERROR - Error inicializando Coqui TTS: No module named 'TTS'
+2025-08-04 17:42:28,413 - __main__ - INFO - Audio manager inicializado
+2025-08-04 17:42:28,414 - __main__ - ERROR - Error inicializando worker: 'JarvisWorker' object has no attribute 'logger'
+2025-08-04 17:42:28,416 - __main__ - ERROR - Error del sistema: 'JarvisWorker' object has no attribute 'logger'
+2025-08-04 17:42:28,419 - __main__ - INFO - Jarvis Holográfico iniciado correctamente
+2025-08-04 17:52:44,341 - backend.audio_manager - ERROR - Error inicializando Coqui TTS: No module named 'TTS'
+2025-08-04 17:52:44,341 - __main__ - INFO - Audio manager inicializado
+2025-08-04 17:52:44,342 - workers.jarvis_worker - INFO - Gemini API configurada correctamente
+2025-08-04 17:52:45,894 - __main__ - INFO - Worker iniciado
+2025-08-04 17:52:45,894 - workers.jarvis_worker - INFO - Worker iniciado
+2025-08-04 17:52:45,897 - __main__ - INFO - Jarvis Holográfico iniciado correctamente
+2025-08-04 17:52:50,302 - workers.jarvis_worker - INFO - Iniciando escucha de voz...
+2025-08-04 17:52:50,565 - workers.jarvis_worker - INFO - Escuchando comando...
+2025-08-04 17:52:52,813 - workers.jarvis_worker - INFO - Comando reconocido: me escuchas
+2025-08-04 17:52:53,988 - workers.jarvis_worker - INFO - Respuesta de Gemini: Perfectamente, señor.  Estoy a la espera de sus instrucciones.
+2025-08-04 17:55:30,558 - backend.audio_manager - INFO - Coqui TTS no disponible, usando pyttsx3 como alternativa
+2025-08-04 17:55:30,558 - __main__ - INFO - Audio manager inicializado
+2025-08-04 17:55:30,559 - workers.jarvis_worker - INFO - Gemini API configurada correctamente
+2025-08-04 17:55:32,113 - __main__ - INFO - Worker iniciado
+2025-08-04 17:55:32,114 - workers.jarvis_worker - INFO - Worker iniciado
+2025-08-04 17:55:32,115 - __main__ - INFO - Jarvis Holográfico iniciado correctamente
+2025-08-04 17:55:37,521 - workers.jarvis_worker - INFO - Iniciando escucha de voz...
+2025-08-04 17:55:38,147 - workers.jarvis_worker - INFO - Escuchando comando...
+2025-08-04 17:55:40,793 - workers.jarvis_worker - INFO - Comando reconocido: Hola jarvis Me
+2025-08-04 17:55:42,183 - workers.jarvis_worker - INFO - Respuesta de Gemini: Buenos días, señor. ¿En qué puedo asistirle hoy? Mi matriz de procesamiento está a su entera disposición.
+2025-08-04 17:56:03,587 - workers.jarvis_worker - INFO - Iniciando escucha de voz...
+2025-08-04 17:56:04,005 - workers.jarvis_worker - INFO - Escuchando comando...
+2025-08-04 17:56:04,314 - workers.jarvis_worker - INFO - Escucha de voz detenida
+2025-08-04 17:56:09,069 - __main__ - ERROR - Timeout esperando comando
+2025-08-04 18:01:33,054 - backend.audio_manager - INFO - Coqui TTS no disponible, usando pyttsx3 como alternativa
+2025-08-04 18:01:33,054 - __main__ - INFO - Audio manager inicializado
+2025-08-04 18:01:33,055 - workers.jarvis_worker - INFO - Gemini API configurada correctamente
+2025-08-04 18:01:34,671 - __main__ - INFO - Worker iniciado
+2025-08-04 18:01:34,672 - workers.jarvis_worker - INFO - Worker iniciado
+2025-08-04 18:01:34,674 - __main__ - INFO - Jarvis Holográfico iniciado correctamente
+2025-08-04 18:01:42,382 - workers.jarvis_worker - INFO - Iniciando escucha de voz...
+2025-08-04 18:01:42,783 - workers.jarvis_worker - INFO - Escuchando comando...
+2025-08-04 18:01:45,058 - workers.jarvis_worker - INFO - Comando reconocido: ayer ves me escuchas
+2025-08-04 18:01:46,316 - workers.jarvis_worker - INFO - Respuesta de Gemini: Perfectamente, señor.  Recibo su señal alto y claro. ¿En qué puedo asistirle hoy?
+2025-08-04 18:01:57,158 - workers.jarvis_worker - INFO - Iniciando escucha de voz...
+2025-08-04 18:01:57,617 - workers.jarvis_worker - INFO - Escuchando comando...
+2025-08-04 18:02:01,752 - workers.jarvis_worker - INFO - Escucha de voz detenida
+2025-08-04 18:02:02,718 - __main__ - ERROR - Timeout esperando comando
+2025-08-04 18:02:04,925 - workers.jarvis_worker - INFO - Iniciando escucha de voz...
+2025-08-04 18:02:05,227 - workers.jarvis_worker - INFO - Escuchando comando...
+2025-08-04 18:02:07,150 - __main__ - ERROR - No se pudo entender el audio
+2025-08-04 18:02:25,316 - workers.jarvis_worker - INFO - Escucha de voz detenida
+2025-08-04 18:02:37,150 - workers.jarvis_worker - INFO - Procesando comando: busca formato de retorno en mi pc
+2025-08-04 18:02:38,934 - workers.jarvis_worker - INFO - Respuesta de Gemini: Ciertamente, señor. He localizado varios archivos con la etiqueta "formato de retorno" en su sistema. ¿Desea que los muestre ordenados por fecha de modificación, tipo de archivo o relevancia para sus proyectos recientes?  Por favor, especifique su preferencia.
+2025-08-04 18:02:39,015 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\daslo\\OneDrive\\Escritorio\\jarvis\\pyqt_version\\jarvis_env\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-08-04 18:02:39,016 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'C:\Users\daslo\OneDrive\Escritorio\jarvis\pyqt_version\jarvis_env\Lib\site-packages\comtypes\gen'
+2025-08-04 18:02:39,448 - backend.audio_manager - INFO - Reproduciendo audio: C:\Users\daslo\AppData\Local\Temp\tmpz5r5i8ev\fallback_audio.wav
+2025-08-04 18:02:39,449 - workers.jarvis_worker - INFO - Respuesta enviada para síntesis
+2025-08-04 18:03:05,780 - workers.jarvis_worker - INFO - Procesando comando: ordenalos por fecha
+2025-08-04 18:03:06,974 - workers.jarvis_worker - INFO - Respuesta de Gemini: Ciertamente, señor.  Indíqueme qué elementos desea ordenar por fecha para que pueda procesar su solicitud.  Aguardo sus instrucciones.
+2025-08-04 18:03:07,155 - backend.audio_manager - INFO - Reproduciendo audio: C:\Users\daslo\AppData\Local\Temp\tmpz5r5i8ev\fallback_audio.wav
+2025-08-04 18:03:07,156 - workers.jarvis_worker - INFO - Respuesta enviada para síntesis
+2025-08-04 18:03:41,007 - workers.jarvis_worker - INFO - Procesando comando: ordenalos por fecha de modificacion
+2025-08-04 18:03:42,338 - workers.jarvis_worker - INFO - Respuesta de Gemini: Archivos ordenados por fecha de modificación, señor.  La lista se muestra en su pantalla principal, con el archivo modificado más recientemente en la parte superior. ¿Alguna otra solicitud?
+2025-08-04 18:03:42,510 - backend.audio_manager - INFO - Reproduciendo audio: C:\Users\daslo\AppData\Local\Temp\tmpz5r5i8ev\fallback_audio.wav
+2025-08-04 18:03:42,511 - workers.jarvis_worker - INFO - Respuesta enviada para síntesis
+2025-08-04 18:04:03,973 - workers.jarvis_worker - INFO - Escucha de voz detenida
+2025-08-04 18:04:07,167 - workers.jarvis_worker - INFO - Iniciando escucha de voz...
+2025-08-04 18:04:07,439 - workers.jarvis_worker - INFO - Escuchando comando...
+2025-08-04 18:04:09,697 - workers.jarvis_worker - INFO - Comando reconocido: puedes escucharme
+2025-08-04 18:04:10,857 - workers.jarvis_worker - INFO - Respuesta de Gemini: Perfectamente, señor.  Estoy a la escucha y a su entera disposición. ¿En qué puedo asistirle?
+2025-08-04 18:04:19,576 - workers.jarvis_worker - INFO - Iniciando escucha de voz...
+2025-08-04 18:04:19,835 - workers.jarvis_worker - INFO - Escuchando comando...
+2025-08-04 18:04:22,713 - workers.jarvis_worker - INFO - Comando reconocido: sigues escuchándome
+2025-08-04 18:04:23,994 - workers.jarvis_worker - INFO - Respuesta de Gemini: Perfectamente, señor.  Estoy a su entera disposición y monitorizando sus instrucciones. ¿En qué puedo asistirle?
+2025-08-04 18:04:26,810 - workers.jarvis_worker - INFO - Iniciando escucha de voz...
+2025-08-04 18:04:27,019 - workers.jarvis_worker - INFO - Escuchando comando...
+2025-08-04 18:04:29,333 - workers.jarvis_worker - INFO - Comando reconocido: Busca formato de
+2025-08-04 18:04:31,486 - workers.jarvis_worker - INFO - Respuesta de Gemini: El formato JAR (Java Archive) es un archivo ZIP que contiene clases Java, metadatos y recursos (como imágenes y sonidos) para aplicaciones Java.  Permite empaquetar una aplicación completa en un solo archivo para su distribución y ejecución.  ¿Necesita más detalles sobre un aspecto específico del formato JAR?
+2025-08-04 18:04:45,688 - __main__ - INFO - Iniciando cierre seguro de JARVIS...
+2025-08-04 18:04:48,690 - __main__ - INFO - JARVIS desconectado correctamente
+2025-08-04 18:04:48,796 - __main__ - INFO - Iniciando cierre seguro de JARVIS...
+2025-08-04 18:04:51,799 - __main__ - INFO - JARVIS desconectado correctamente
+2025-08-04 18:04:51,853 - __main__ - INFO - Iniciando cierre seguro de JARVIS...
+2025-08-04 18:04:54,855 - __main__ - INFO - JARVIS desconectado correctamente
+2025-08-04 18:05:16,599 - backend.audio_manager - INFO - Coqui TTS no disponible, usando pyttsx3 como alternativa
+2025-08-04 18:05:16,600 - __main__ - INFO - Audio manager inicializado
+2025-08-04 18:05:16,600 - workers.jarvis_worker - INFO - Gemini API configurada correctamente
+2025-08-04 18:05:18,152 - __main__ - INFO - Worker iniciado
+2025-08-04 18:05:18,152 - workers.jarvis_worker - INFO - Worker iniciado
+2025-08-04 18:05:18,155 - __main__ - INFO - Jarvis Holográfico iniciado correctamente
+2025-08-04 18:05:42,940 - workers.jarvis_worker - INFO - Procesando comando: busca formato de retorno y muestrame el mas reciente
+2025-08-04 18:05:45,047 - workers.jarvis_worker - INFO - Respuesta de Gemini: El formato de retorno más reciente utilizado comúnmente es JSON (JavaScript Object Notation).  Ofrece una estructura de datos legible tanto para humanos como para máquinas, ideal para el intercambio de datos en aplicaciones web y APIs.  ¿Desea que le proporcione ejemplos o documentación específica sobre JSON?
+2025-08-04 18:05:45,102 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\daslo\\OneDrive\\Escritorio\\jarvis\\pyqt_version\\jarvis_env\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-08-04 18:05:45,103 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'C:\Users\daslo\OneDrive\Escritorio\jarvis\pyqt_version\jarvis_env\Lib\site-packages\comtypes\gen'
+2025-08-04 18:05:45,433 - backend.audio_manager - INFO - Reproduciendo audio: C:\Users\daslo\AppData\Local\Temp\tmp9jhxpd_q\fallback_audio.wav
+2025-08-04 18:05:45,434 - workers.jarvis_worker - INFO - Respuesta enviada para síntesis
+2025-08-04 18:06:17,515 - workers.jarvis_worker - INFO - Procesando comando: no buscalo internamente en la pc
+2025-08-04 18:06:18,772 - workers.jarvis_worker - INFO - Respuesta de Gemini: Entendido, señor.  Omitiré la búsqueda local y me concentraré en recursos externos para su consulta. Por favor, indíqueme qué información requiere.
+2025-08-04 18:06:18,951 - backend.audio_manager - INFO - Reproduciendo audio: C:\Users\daslo\AppData\Local\Temp\tmp9jhxpd_q\fallback_audio.wav
+2025-08-04 18:06:18,952 - workers.jarvis_worker - INFO - Respuesta enviada para síntesis
+2025-08-04 18:07:13,936 - workers.jarvis_worker - INFO - Procesando comando: busca el formato que este en excel y sea el mas reciente
+2025-08-04 18:07:15,742 - workers.jarvis_worker - INFO - Respuesta de Gemini: El formato más reciente de Excel es .xlsx, introducido con Excel 2007.  Utiliza Open XML, que mejora la compatibilidad y reduce el tamaño de los archivos en comparación con el antiguo .xls.  ¿Desea que le proporcione más información sobre el formato .xlsx o sobre las versiones anteriores?
+2025-08-04 18:07:16,015 - backend.audio_manager - INFO - Reproduciendo audio: C:\Users\daslo\AppData\Local\Temp\tmp9jhxpd_q\fallback_audio.wav
+2025-08-04 18:07:16,015 - workers.jarvis_worker - INFO - Respuesta enviada para síntesis
+2025-08-04 18:07:25,654 - workers.jarvis_worker - INFO - Escucha de voz detenida
+2025-08-04 18:08:40,851 - __main__ - INFO - Iniciando cierre seguro de JARVIS...
+2025-08-04 18:08:43,857 - __main__ - INFO - JARVIS desconectado correctamente
+2025-08-04 18:15:17,660 - backend.audio_manager - INFO - Coqui TTS no disponible, usando pyttsx3 como alternativa
+2025-08-04 18:15:17,661 - __main__ - INFO - Audio manager inicializado
+2025-08-04 18:15:17,661 - workers.jarvis_worker - INFO - Gemini API configurada correctamente
+2025-08-04 18:15:19,331 - __main__ - INFO - Worker iniciado
+2025-08-04 18:15:19,332 - workers.jarvis_worker - INFO - Worker iniciado
+2025-08-04 18:15:19,335 - __main__ - INFO - Jarvis Holográfico iniciado correctamente
+2025-08-04 18:15:45,050 - workers.jarvis_worker - INFO - Procesando comando: busca formato de retorno en la pc y dame el resultado mas reciente
+2025-08-04 18:15:49,529 - workers.jarvis_worker - INFO - Respuesta de Gemini con contexto: Ciertamente, señor. He localizado la configuración...
+2025-08-04 18:15:49,614 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\daslo\\OneDrive\\Escritorio\\jarvis\\pyqt_version\\jarvis_env\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-08-04 18:15:49,614 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'C:\Users\daslo\OneDrive\Escritorio\jarvis\pyqt_version\jarvis_env\Lib\site-packages\comtypes\gen'
+2025-08-04 18:15:50,230 - backend.audio_manager - INFO - Reproduciendo audio: C:\Users\daslo\AppData\Local\Temp\tmpxpxyzzby\fallback_audio.wav
+2025-08-04 18:15:50,231 - workers.jarvis_worker - INFO - Respuesta enviada para síntesis
+2025-08-04 18:16:48,392 - __main__ - INFO - Iniciando cierre seguro de JARVIS...
+2025-08-04 18:16:51,396 - __main__ - INFO - JARVIS desconectado correctamente
+2025-08-04 18:18:57,808 - backend.audio_manager - INFO - Coqui TTS no disponible, usando pyttsx3 como alternativa
+2025-08-04 18:18:57,808 - __main__ - INFO - Audio manager inicializado
+2025-08-04 18:18:57,809 - workers.jarvis_worker - INFO - Gemini API configurada correctamente
+2025-08-04 18:18:59,411 - __main__ - INFO - Worker iniciado
+2025-08-04 18:18:59,413 - workers.jarvis_worker - INFO - Worker iniciado
+2025-08-04 18:18:59,415 - __main__ - INFO - Jarvis Holográfico iniciado correctamente
+2025-08-04 18:19:22,271 - workers.jarvis_worker - INFO - Procesando comando: busca los archivos de formato de retorno en mi pc y dame el mas reciente
+2025-08-04 18:19:25,518 - workers.jarvis_worker - INFO - Respuesta de Gemini con contexto: Ciertamente, señor. Estoy buscando archivos con la...
+2025-08-04 18:19:25,591 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\daslo\\OneDrive\\Escritorio\\jarvis\\pyqt_version\\jarvis_env\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-08-04 18:19:25,591 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'C:\Users\daslo\OneDrive\Escritorio\jarvis\pyqt_version\jarvis_env\Lib\site-packages\comtypes\gen'
+2025-08-04 18:19:26,070 - backend.audio_manager - INFO - Reproduciendo audio: C:\Users\daslo\AppData\Local\Temp\tmpcpkdb79w\fallback_audio.wav
+2025-08-04 18:19:26,071 - workers.jarvis_worker - INFO - Respuesta enviada para síntesis
+2025-08-04 18:20:34,405 - workers.jarvis_worker - INFO - Procesando comando: dame el listado de los archivos que encontraste
+2025-08-04 18:20:38,311 - workers.jarvis_worker - INFO - Respuesta de Gemini con contexto: Por supuesto, señor. Aquí tiene el listado de los ...
+2025-08-04 18:20:38,844 - backend.audio_manager - INFO - Reproduciendo audio: C:\Users\daslo\AppData\Local\Temp\tmpcpkdb79w\fallback_audio.wav
+2025-08-04 18:20:38,846 - workers.jarvis_worker - INFO - Respuesta enviada para síntesis
+2025-08-04 18:21:51,729 - workers.jarvis_worker - INFO - Iniciando escucha de voz...
+2025-08-04 18:21:52,006 - workers.jarvis_worker - INFO - Escuchando comando...
+2025-08-04 18:21:54,461 - workers.jarvis_worker - INFO - Comando reconocido: Cómo estás iapi
+2025-08-04 18:21:57,218 - workers.jarvis_worker - INFO - Respuesta de Gemini con contexto: Estoy funcionando a pleno rendimiento, señor. Grac...
+2025-08-04 18:22:10,499 - workers.jarvis_worker - INFO - Escucha de voz detenida
+2025-08-04 18:23:49,947 - __main__ - INFO - Iniciando cierre seguro de JARVIS...
+2025-08-04 18:23:52,949 - __main__ - INFO - JARVIS desconectado correctamente
+2025-08-04 19:08:01,875 - root - ERROR - Error importando módulos: cannot import name 'MainWindowBase' from 'ui_designs.main_window_base' (C:\Users\daslo\OneDrive\Escritorio\jarvis\pyqt_version\ui_designs\main_window_base.py)

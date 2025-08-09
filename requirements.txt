@@ -1,0 +1,12 @@
+# Dependencias básicas (requeridas)
+requests
+psutil
+
+# Dependencias opcionales de voz (instalar solo si necesitas función de voz)
+# SpeechRecognition
+# pyttsx3  
+# pyaudio
+
+# Dependencias opcionales adicionales
+# send2trash
+# pyautogui

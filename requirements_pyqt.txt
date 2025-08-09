@@ -1,0 +1,32 @@
+# === DEPENDENCIAS ACTUALES ===
+requests
+psutil
+
+# === NUEVAS DEPENDENCIAS PYQT5 ===
+PyQt5>=5.15.0
+PyQt5-tools>=5.15.0.3.2  # Incluye Qt Designer
+
+# === DEPENDENCIAS DE IA ===
+google-generativeai>=0.3.0  # Google Gemini API
+openai>=1.0.0
+python-dotenv>=0.19.0
+
+# === DEPENDENCIAS DE VOZ MEJORADAS ===
+SpeechRecognition>=3.10.0
+# TTS>=0.22.0  # Coqui TTS - No compatible con Python 3.12
+# torch>=2.0.0  # Backend de ML para Coqui TTS  
+# torchaudio>=2.0.0  # Audio processing para Coqui
+soundfile>=0.12.1  # Para manejo de archivos de audio
+pyaudio>=0.2.11
+# elevenlabs>=0.2.0  # Ya no necesario - reemplazado por pyttsx3
+
+# === DEPENDENCIAS ADICIONALES ===
+pyttsx3>=2.90  # TTS fallback
+matplotlib>=3.5.0  # Para visualizaciones
+numpy>=1.21.0  # Procesamiento de datos
+Pillow>=8.3.0  # Manipulación de imágenes
+
+# === DEPENDENCIAS DE DESARROLLO ===
+pytest>=6.2.0
+black>=21.0.0
+flake8>=3.9.0
