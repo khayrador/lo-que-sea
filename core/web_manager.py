@@ -8,10 +8,7 @@ import requests
 from typing import List, Dict, Optional, Any
 import urllib.parse
 from urllib.parse import urlparse
-import subprocess
-import os
 import re
-from urllib.parse import urljoin
 import time
 
 class WebManager:
@@ -135,7 +132,6 @@ class WebManager:
             response.raise_for_status()
             
             # Extraer título usando regex simple
-            import re
             title_match = re.search(r'<title[^>]*>([^<]+)</title>', response.text, re.IGNORECASE)
             
             if title_match:

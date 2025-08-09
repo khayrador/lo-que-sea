@@ -7,11 +7,9 @@ import os
 import shutil
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple, Any
-import json
 import mimetypes
 import re
 from datetime import datetime, timedelta
-import fnmatch
 
 class FileManager:
     """Clase para manejar operaciones con archivos"""
@@ -40,6 +38,25 @@ class FileManager:
             'comprimidos': ['.zip', '.rar', '.7z', '.tar', '.gz', '.bz2'],
             'ejecutables': ['.exe', '.msi', '.dmg', '.deb', '.rpm', '.app']
         }
+
+        # Conjuntos reutilizados para evitar recomputación
+        self.text_extensions = {
+            '.txt', '.py', '.js', '.html', '.css', '.json', '.xml', '.md',
+            '.csv', '.log', '.ini', '.cfg', '.conf', '.yaml', '.yml'
+        }
+        self.stop_words = {
+            'archivos', 'archivo', 'files', 'file', 'buscar', 'search', 'find', 'encontrar',
+            'del', 'de', 'la', 'el', 'en', 'con', 'por', 'para', 'un', 'una', 'los', 'las',
+            'and', 'or', 'the', 'a', 'an', 'in', 'on', 'at', 'to', 'for', 'of', 'with'
+        }
+        # Directorios pesados/sistema a evitar
+        self.skip_dir_names = {
+            '.git', '.hg', '.svn', 'node_modules', '__pycache__', '.venv', 'venv', 'env',
+            'jarvis_env', '.mypy_cache', '.pytest_cache', '.cache',
+            # Windows
+            'Windows', 'Program Files', 'Program Files (x86)', 'ProgramData', 'AppData',
+            '$Recycle.Bin', 'System Volume Information', 'OneDriveTemp', 'Temp'
+        }
         
     def smart_search_files(self, query: str, **kwargs) -> Dict[str, Any]:
         """
@@ -53,89 +70,112 @@ class FileManager:
                 - recent_days: Buscar archivos modificados en los últimos N días
                 - min_size: Tamaño mínimo en bytes
                 - max_size: Tamaño máximo en bytes
-                
+                - file_types: Lista de extensiones a incluir (['.py', '.txt'])
+                - time_limit: Límite de tiempo en segundos (float)
+                - include_system: Incluir raíz del sistema (C:/) en Windows
+        
         Returns:
             Diccionario con resultados de búsqueda y estadísticas
         """
         max_results = kwargs.get('max_results', 100)
         include_content = kwargs.get('include_content', False)
-        recent_days = kwargs.get('recent_days', None)
-        min_size = kwargs.get('min_size', None)
-        max_size = kwargs.get('max_size', None)
-        
+        recent_days = kwargs.get('recent_days')
+        min_size = kwargs.get('min_size')
+        max_size = kwargs.get('max_size')
+        time_limit = kwargs.get('time_limit', 8.0)
+        include_system = kwargs.get('include_system', False)
+
         # Analizar consulta natural
         search_params = self._parse_natural_query(query)
-        
+
         # Combinar parámetros
-        if recent_days:
+        if recent_days is not None:
             search_params['recent_days'] = recent_days
-        if min_size:
-            search_params['min_size'] = min_size
-        if max_size:
-            search_params['max_size'] = max_size
-            
-        results = []
-        stats = {
+        # Filtro por tamaño (usar tupla size_range esperada por _matches_criteria)
+        if min_size is not None or max_size is not None:
+            search_params['size_range'] = (min_size, max_size)
+        # Permitir pasar tipos de archivo explícitos por kwargs
+        kw_file_types = kwargs.get('file_types')
+        if kw_file_types:
+            for ext in kw_file_types:
+                e = str(ext).lower()
+                if not e.startswith('.'):
+                    e = '.' + e
+                search_params['file_types'].append(e)
+
+        results: List[Dict[str, Any]] = []
+        stats: Dict[str, Any] = {
             'total_found': 0,
             'by_type': {},
             'by_location': {},
             'search_time': 0,
             'content_matches': 0
         }
-        
+
         start_time = datetime.now()
-        
+
         # Realizar búsqueda
         for search_path in self.search_paths:
+            # Evitar raíz del sistema salvo que se solicite (Windows)
+            if (os.name == 'nt' and str(search_path).rstrip('\\/').upper() == 'C:' and not include_system):
+                continue
             if not search_path.exists():
                 continue
-                
+
             location_name = search_path.name or str(search_path)
             stats['by_location'][location_name] = 0
-                
+
             try:
-                for file_path in search_path.rglob("*"):
+                for file_path in self._iter_files(search_path, start_time, time_limit):
+                    # Verificar tiempo límite global
+                    if (datetime.now() - start_time).total_seconds() > time_limit:
+                        break
                     if len(results) >= max_results:
                         break
-                        
+
                     if not file_path.is_file():
                         continue
-                    
+
                     # Aplicar filtros
                     if not self._matches_criteria(file_path, search_params):
                         continue
-                    
+
                     # Buscar en contenido si se especifica
                     content_match = False
                     if include_content and self._is_text_file(file_path):
                         content_match = self._search_in_content(file_path, search_params['keywords'])
                         if content_match:
                             stats['content_matches'] += 1
-                    
+
                     # Si no coincide ni nombre ni contenido, saltar
                     if not (self._matches_filename(file_path, search_params['keywords']) or content_match):
                         continue
-                    
+
                     # Obtener información del archivo
                     file_info = self._get_detailed_file_info(file_path)
                     file_info['content_match'] = content_match
-                    
+
                     results.append(file_info)
                     stats['total_found'] += 1
                     stats['by_location'][location_name] += 1
-                    
+
                     # Actualizar estadísticas por tipo
                     file_type = file_info.get('category', 'otros')
                     stats['by_type'][file_type] = stats['by_type'].get(file_type, 0) + 1
-                        
-            except (PermissionError, OSError) as e:
+
+            except (PermissionError, OSError):
                 continue
-        
+
+            # Verificar tiempo después de cada carpeta
+            if (datetime.now() - start_time).total_seconds() > time_limit:
+                break
+
         # Ordenar resultados por relevancia
         results = self._sort_by_relevance(results, search_params['keywords'])
-        
+
         stats['search_time'] = (datetime.now() - start_time).total_seconds()
-        
+        stats['truncated'] = len(results) >= max_results or stats['search_time'] >= time_limit
+
         return {
             'success': True,
             'query': query,
@@ -143,6 +183,30 @@ class FileManager:
             'stats': stats,
             'suggestions': self._get_search_suggestions(query, stats)
         }
+
+    def _iter_files(self, base_path: Path, start_time: datetime, time_limit: float):
+        """Iterar archivos evitando directorios pesados y respetando timeouts."""
+        try:
+            for root, dirs, files in os.walk(base_path, topdown=True):
+                # Prune directorios pesados por nombre
+                dirs[:] = [d for d in dirs if d not in self.skip_dir_names]
+                # También evitar directorios ocultos
+                dirs[:] = [d for d in dirs if not d.startswith('.')]
+
+                # Timeout
+                if (datetime.now() - start_time).total_seconds() > time_limit:
+                    break
+
+                for fname in files:
+                    # Timeout
+                    if (datetime.now() - start_time).total_seconds() > time_limit:
+                        break
+                    # Saltar archivos ocultos
+                    if fname.startswith('.'):
+                        continue
+                    yield Path(root) / fname
+        except Exception:
+            return
     
     def _parse_natural_query(self, query: str) -> Dict[str, Any]:
         """
@@ -204,17 +268,11 @@ class FileManager:
             params['size_range'] = (None, 1024*1024)  # Menos de 1MB
         
         # Extraer palabras clave (excluir palabras funcionales)
-        stop_words = {
-            'archivos', 'archivo', 'files', 'file', 'buscar', 'search', 'find', 'encontrar',
-            'del', 'de', 'la', 'el', 'en', 'con', 'por', 'para', 'un', 'una', 'los', 'las',
-            'and', 'or', 'the', 'a', 'an', 'in', 'on', 'at', 'to', 'for', 'of', 'with'
-        }
-        
         # Limpiar query y extraer keywords
         clean_keywords = []
         words = re.findall(r'\b\w+\b', query_lower)
         for word in words:
-            if len(word) > 2 and word not in stop_words:
+            if len(word) > 2 and word not in self.stop_words:
                 # No incluir si ya es una categoría o extensión
                 if not any(word in cat for cat in self.file_categories.keys()):
                     clean_keywords.append(word)
@@ -285,9 +343,7 @@ class FileManager:
         """
         Verificar si un archivo es de texto (searchable)
         """
-        text_extensions = {'.txt', '.py', '.js', '.html', '.css', '.json', '.xml', '.md', 
-                          '.csv', '.log', '.ini', '.cfg', '.conf', '.yaml', '.yml'}
-        return file_path.suffix.lower() in text_extensions
+        return file_path.suffix.lower() in self.text_extensions
     
     def _get_detailed_file_info(self, file_path: Path) -> Dict[str, Any]:
         """
@@ -614,10 +670,9 @@ class FileManager:
             'max_results': max_results
         }
         
-        # Si se especifican tipos de archivo, agregarlos a la consulta
+        # Pasar tipos de archivo como parámetro explícito
         if file_types:
-            type_query = ' '.join(file_types)
-            query = f"{query} {type_query}"
+            kwargs['file_types'] = file_types
         
         smart_result = self.smart_search_files(query, **kwargs)
         
@@ -640,72 +695,18 @@ class FileManager:
             Diccionario con archivos recientes y estadísticas
         """
         query = f"archivos recientes últimos {days} días"
-        
         kwargs = {
             'max_results': max_results,
             'recent_days': days
         }
-        
         if file_types:
-            kwargs['file_types'] = file_types
-        
+            # Normalizar extensiones
+            norm = []
+            for ext in file_types:
+                e = str(ext).lower()
+                if not e.startswith('.'):
+                    e = '.' + e
+                norm.append(e)
+            kwargs['file_types'] = norm
+
         return self.smart_search_files(query, **kwargs)
-    
-    def find_large_files(self, min_size_mb: float = 100, max_results: int = 20) -> Dict[str, Any]:
-        """
-        Encontrar archivos grandes
-        
-        Args:
-            min_size_mb: Tamaño mínimo en MB
-            max_results: Número máximo de resultados
-            
-        Returns:
-            Diccionario con archivos grandes y estadísticas
-        """
-        min_size_bytes = int(min_size_mb * 1024 * 1024)
-        
-        return self.smart_search_files(
-            f"archivos grandes más de {min_size_mb}MB",
-            max_results=max_results,
-            min_size=min_size_bytes
-        )
-    
-    def find_by_category(self, category: str, max_results: int = 50) -> Dict[str, Any]:
-        """
-        Buscar archivos por categoría
-        
-        Args:
-            category: Categoría (documentos, imagenes, videos, etc.)
-            max_results: Número máximo de resultados
-            
-        Returns:
-            Diccionario con archivos de la categoría y estadísticas
-        """
-        return self.smart_search_files(
-            f"archivos {category}",
-            max_results=max_results
-        )
-    
-    def search_in_content(self, keywords: str, file_types: Optional[List[str]] = None,
-                         max_results: int = 30) -> Dict[str, Any]:
-        """
-        Buscar archivos que contengan ciertas palabras clave en su contenido
-        
-        Args:
-            keywords: Palabras clave a buscar
-            file_types: Tipos de archivo donde buscar
-            max_results: Número máximo de resultados
-            
-        Returns:
-            Diccionario con archivos que contienen las palabras y estadísticas
-        """
-        kwargs = {
-            'max_results': max_results,
-            'include_content': True
-        }
-        
-        if file_types:
-            type_query = ' '.join(file_types)
-            keywords = f"{keywords} {type_query}"
-        
-        return self.smart_search_files(keywords, **kwargs)

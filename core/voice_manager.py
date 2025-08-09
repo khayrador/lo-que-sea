@@ -63,7 +63,7 @@ class VoiceManager:
     
     def _configure_tts(self):
         """Configurar el motor de síntesis de voz"""
-        if not self.tts_enabled:
+        if not self.tts_enabled or not getattr(self, 'tts_engine', None):
             return
             
         try:
@@ -208,10 +208,9 @@ class VoiceManager:
                 
                 # Escuchar audio con configuración mejorada
                 audio = self.recognizer.listen(
-                    source, 
-                    timeout=timeout, 
-                    phrase_time_limit=15,
-                    timeout_per_phrase=2
+                    source,
+                    timeout=timeout,
+                    phrase_time_limit=15
                 )
                 
             print("🔄 Procesando y reconociendo audio...")
